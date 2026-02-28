@@ -6,7 +6,36 @@ const LAYERS = {
         badge: "USER-FACING",
         desc: `The Application Layer is where user-facing protocols live. When you open a browser and type a URL, your browser uses HTTP (or HTTPS) to request a webpage. This layer deals with <em>what</em> data is exchanged and its meaning — not how it travels.`,
         desc2: `It abstracts all lower-level complexity. Applications don't care whether data travels over Wi-Fi or fiber — they just make requests and receive responses.`,
-        protocols: ["HTTP", "HTTPS", "DNS", "FTP", "SMTP", "SSH", "DHCP"],
+        protocols: [
+            {
+                name: "HTTP",
+                title: "Hypertext Transfer Protocol | on port 80",
+            },
+            {
+                name: "HTTPS",
+                title: "Hypertext Transfer Protocol Secure | on port 443",
+            },
+            {
+                name: "DNS",
+                title: "Domain Name System | on port 53",
+            },
+            {
+                name: "FTP",
+                title: "File Transfer Protocol | on port 21",
+            },
+            {
+                name: "SMTP",
+                title: "Simple Mail Transfer Protocol | on port 25",
+            },
+            {
+                name: "SSH",
+                title: "Secure Shell | on port 22",
+            },
+            {
+                name: "DHCP",
+                title: "Dynamic Host Configuration Protocol | on port 67",
+            },
+        ],
         pdu: "PDU: <strong>Message / Data</strong>",
     },
     trans: {
@@ -56,7 +85,7 @@ function showLayer(key) {
     <p>${l.desc}</p>
     <p>${l.desc2}</p>
     <div class="protocols-list">
-      ${l.protocols.map((p) => `<span class="proto-tag" style="color:${l.color};border-color:${l.color}55">${p}</span>`).join("")}
+      ${l.protocols.map((p) => `<span title="${p.title}" class="proto-tag" style="color:${l.color};border-color:${l.color}55">${p.name}</span>`).join("")}
     </div>
     <div class="pdu-info" style="border-color:${l.color};color:#a0b4cc">${l.pdu}</div>
   `;
